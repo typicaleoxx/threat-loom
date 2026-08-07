@@ -1,0 +1,73 @@
+name: Feature request
+description: Propose a focused Threat Loom capability or improvement
+title: "[Feature]: "
+labels:
+  - "type: feature"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe one outcome. Do not include credentials, restricted intelligence, customer data, employee data, or internal operational details.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: State the requested outcome in a few clear sentences.
+      placeholder: What should Threat Loom support?
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or context
+      description: Explain the user need, current limitation, and why it matters.
+      placeholder: Who needs this, and what problem does it solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior
+      description: Describe the expected user or system behavior without prescribing unnecessary implementation detail.
+      placeholder: What should happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable conditions that define completion.
+      placeholder: |
+        - [ ] Given ..., when ..., then ...
+        - [ ] Relevant accessibility and error states are covered
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Select the primary affected area.
+      options:
+        - Frontend
+        - Visualization
+        - Data
+        - OpenCTI
+        - Infrastructure
+        - Documentation
+        - CI/CD
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add relevant links, constraints, designs, dependencies, or safe examples.
+      placeholder: Optional supporting context
+    validations:
+      required: false

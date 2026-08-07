@@ -1,0 +1,74 @@
+name: Bug report
+description: Report reproducible incorrect Threat Loom behavior
+title: "[Bug]: "
+labels:
+  - "type: bug"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Remove credentials, restricted intelligence, customer data, employee data, and internal operational details from all evidence.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the defect and its impact.
+      placeholder: What is wrong, and who is affected?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence that reproduces the problem.
+      placeholder: |
+        1. Open ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State what should happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: State what happens instead, including frequency when known.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include the relevant browser, operating system, display resolution, deployment mode, and revision when known.
+      placeholder: Browser, OS, resolution, deployment, revision
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or screenshots
+      description: Add sanitized logs, screenshots, or recordings. Do not include secrets or restricted data.
+      placeholder: Drag safe files here or paste sanitized text
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add relevant patterns, workarounds, regressions, or linked issues.
+      placeholder: Optional supporting context
+    validations:
+      required: false
