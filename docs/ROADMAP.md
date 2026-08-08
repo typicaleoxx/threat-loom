@@ -64,6 +64,10 @@ The repository-backed Next.js application shell, baseline navigation and respons
 
 Deliver the primary relationship graph and its data transformation boundary.
 
+### Current progress
+
+The initial Cytoscape graph, normalized graph transformation, semantic node and edge treatment, zoom, pan, fit, selection, neighborhood focus, clear selection, responsive resizing, and focused tests are implemented. Complete explorer filtering, contextual details, and later milestone work remain pending.
+
 ### Major deliverables
 
 - Cytoscape.js integration;

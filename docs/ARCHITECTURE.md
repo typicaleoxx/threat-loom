@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom currently has a repository-backed Next.js application shell, source-neutral domain model contracts, a normalized development-only dataset, and a mock repository implementation. Relationship visualization, OpenCTI, production adapter, and deployment architecture remain planned and are not implemented.
+Threat Loom currently has a repository-backed Next.js application shell, source-neutral domain model contracts, a normalized development-only dataset, a mock repository implementation, and an initial Cytoscape relationship graph. OpenCTI, production adapters, complete explorer flows, and deployment architecture remain planned and are not implemented.
 
 ## Architecture principles
 
@@ -36,7 +36,7 @@ clearly labeled mock records
  Cytoscape.js graph       React interface
 ```
 
-The mock repository returns normalized domain entities and relationships from the synthetic dataset. React components must depend on the repository contract and must not import fixtures directly. The graph transformation and view-model layers remain planned.
+The mock repository returns normalized domain entities and relationships from the synthetic dataset. React components depend on the repository contract and do not import fixtures directly. The graph transformation maps domain identity and semantics into Cytoscape-only element definitions before the client graph component renders them.
 
 Mock records must be labeled as development or test data. They must not be presented as current threat intelligence.
 
@@ -68,10 +68,9 @@ The exact Next.js server boundary and caching approach will be decided during fo
 
 ## Frontend responsibilities
 
-The baseline frontend now provides repository-backed actor, industry, and ATT&CK technique entry points plus a responsive workspace reserved for the relationship visualization. Later frontend work will:
+The frontend provides repository-backed actor, industry, and ATT&CK technique entry points plus a responsive Cytoscape relationship graph. The initial graph supports zoom, pan, fit, node selection, direct-neighborhood focus, unrelated-element muting, background clearing, and keyboard entity focus. Later frontend work will:
 
 - manage selection, filters, navigation, focus, and idle-state transitions;
-- transform normalized entities and relationships into Cytoscape.js elements;
 - render contextual details and provenance;
 - provide safe loading, empty, partial-data, and error states;
 - support large landscape displays and normal desktop layouts;
@@ -84,6 +83,7 @@ The frontend will not ingest CTI feeds, store connector secrets, perform analyst
 The async repository contract is implemented in [`src/data/repository.ts`](../src/data/repository.ts), with the development implementation in [`src/data/mock/repository.ts`](../src/data/mock/repository.ts). It supports focused queries to:
 
 - retrieve an entity by stable ID;
+- retrieve all normalized entities and relationships for graph construction;
 - list entities by supported category;
 - retrieve relationships for an entity or exploration context;
 - retrieve related entities with optional direction and relationship-type filters.
@@ -102,7 +102,9 @@ The model stays intentionally small until real graph and OpenCTI mapping needs j
 
 ## Visualization layer
 
-Cytoscape.js is planned as the graph rendering and interaction engine. A dedicated transformation step will map normalized domain data to graph nodes, edges, styles, and layout inputs. This step must be unit-testable without a browser and must not fetch data.
+Cytoscape.js is the graph rendering and interaction engine. [`src/graph/graph.ts`](../src/graph/graph.ts) maps normalized domain data to stable node and edge definitions without fetching data or modifying domain models. Cytoscape-specific types, styles, layout, resize handling, and graph interaction state remain inside `src/graph/`.
+
+The initial component uses a deterministic breadth-first layout, semantic category colors and shapes, directed relationship treatments, fit controls, and direct-neighborhood focus classes. The transformation and focus behavior are unit-tested without a browser.
 
 Semantic entity categories will drive visual treatment. Selection, focus, filtering, and neighborhood expansion should preserve graph context. Layout choices must be deterministic enough for testing and stable enough to avoid disorienting movement.
 
