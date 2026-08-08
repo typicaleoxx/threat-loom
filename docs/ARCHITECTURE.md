@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom currently has a minimal Next.js application shell and source-neutral domain model contracts. The repository, adapter, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
+Threat Loom currently has a minimal Next.js application shell, source-neutral domain model contracts, and a normalized development-only dataset. The repository, adapter, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
 
 ## Architecture principles
 

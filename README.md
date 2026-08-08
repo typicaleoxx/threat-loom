@@ -4,7 +4,7 @@ Threat Loom is an interactive cyber threat intelligence visualization platform.
 
 It is planned to help users explore relationships among threat actors, industries, campaigns, malware, tools, MITRE ATT&CK techniques, infrastructure, locations, and public intelligence reports.
 
-> Project status: v0.2 Foundation. The minimal application shell, quality tooling, and normalized domain contracts are initialized. Threat intelligence and visualization features are not implemented.
+> Project status: v0.2 Foundation. The minimal application shell, quality tooling, normalized domain contracts, and synthetic development dataset are initialized. Threat intelligence and visualization features are not implemented.
 
 ## Purpose
 
@@ -60,6 +60,7 @@ The project is intended to remain usable with open-source software, free or publ
 |-- .github/                 GitHub contribution templates
 |-- docs/                    Product, architecture, design, security, and workflow plans
 |-- src/app/                 Minimal Next.js App Router shell
+|-- src/data/mock/           Synthetic development-only CTI records
 |-- src/domain/              Source-neutral domain model contracts
 |-- AGENTS.md                Repository engineering contract
 |-- LICENSE                  Project license
@@ -69,7 +70,7 @@ The project is intended to remain usable with open-source software, free or publ
 
 ## Development status
 
-The repository contains a minimal Next.js application and source-neutral TypeScript domain models, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. It does not contain data adapters, mock intelligence, graph libraries, OpenCTI integration, or Docker configuration yet.
+The repository contains a minimal Next.js application, source-neutral TypeScript domain models, and a small synthetic development dataset, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. It does not contain data adapters, repositories, graph libraries, OpenCTI integration, or Docker configuration yet.
 
 ## Local development
 
