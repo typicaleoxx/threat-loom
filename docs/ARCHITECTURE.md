@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom currently has a minimal Next.js application shell with TypeScript, Tailwind CSS, ESLint, and Prettier. The data, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
+Threat Loom currently has a minimal Next.js application shell and source-neutral domain model contracts. The repository, adapter, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
 
 ## Architecture principles
 
@@ -94,7 +94,7 @@ Adapters are responsible for source validation, source-to-domain mapping, relati
 
 ## Normalized data model boundary
 
-Normalized models are source-neutral contracts for `ThreatActor`, `Industry`, `AttackTechnique`, `Campaign`, `Malware`, `Tool`, `Infrastructure`, `Location`, `Report`, and `Relationship`.
+Normalized models are implemented in [`src/domain/models.ts`](../src/domain/models.ts) as source-neutral contracts for `ThreatActor`, `Industry`, `AttackTechnique`, `Campaign`, `Malware`, `Tool`, `Infrastructure`, `Location`, `Report`, and `Relationship`.
 
 Every entity has a stable internal ID and type. Every relationship has a stable ID, source entity ID, target entity ID, relationship type, and provenance where available. Optional fields remain optional rather than being filled with invented values.
 

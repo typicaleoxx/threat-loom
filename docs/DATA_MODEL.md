@@ -2,7 +2,7 @@
 
 ## Status and intent
 
-This document defines the initial planned Threat Loom domain model. It is a source-neutral contract for exploration and visualization, not a complete CTI ontology. Exact TypeScript types will be introduced during the foundation phase and should remain smaller than the source schemas they map.
+This document defines the initial Threat Loom domain model implemented in [`src/domain/models.ts`](../src/domain/models.ts). It is a source-neutral contract for exploration and visualization, not a complete CTI ontology, and remains smaller than the source schemas it may map.
 
 ## Shared expectations
 
@@ -14,10 +14,11 @@ Every entity is expected to include:
 - `description`: optional source-supported summary;
 - `aliases`: optional alternate names;
 - `sourceRefs`: provenance references to source systems or reports;
-- `createdAt` and `updatedAt`: optional source timestamps where meaningful;
-- `metadata`: limited, approved source-supported fields that have a demonstrated use.
+- `createdAt` and `updatedAt`: optional source timestamps where meaningful.
 
 Optional data stays absent when it is unknown. The adapter must not invent dates, locations, attribution, industries, techniques, or relationships.
+
+The initial model does not include a generic metadata bag. New fields should be typed and added only when a current domain requirement needs them.
 
 ## Entity definitions
 
@@ -121,10 +122,11 @@ Likely core fields:
 - shared entity fields;
 - `locationType`, such as country or region;
 - `countryCode`, when applicable;
-- `region`, when applicable;
-- `coordinates`, only when the source supports the precision and display is approved.
+- `region`, when applicable.
 
 Location does not imply attribution or origin unless the relationship and source explicitly state it.
+
+Coordinates and other visualization-specific fields are not part of the initial domain model.
 
 ### Report
 
@@ -154,14 +156,13 @@ Likely core fields:
 - `description`: optional source-supported context;
 - `firstSeen` and `lastSeen`, when applicable;
 - `confidence`, when provided;
-- `sourceRefs`: provenance references;
-- `metadata`: limited relationship-specific values with a current use.
+- `sourceRefs`: provenance references.
 
 Relationships must refer to existing entity IDs. Direction must remain meaningful even if the visualization renders an undirected visual treatment for a particular view.
 
 ## Relationship semantics
 
-The initial vocabulary should stay small and be extended only for real source mappings. Candidate normalized semantics include:
+The implemented initial vocabulary stays small and should be extended only for real source mappings. Its normalized semantics are:
 
 - `targets`: threat actor or campaign targets an industry or location;
 - `uses`: threat actor or campaign uses malware, a tool, infrastructure, or an ATT&CK technique;
@@ -198,7 +199,7 @@ Mock identifiers and labels must make their development or test purpose obvious.
 
 ## Provenance and source expectations
 
-Each entity and relationship should retain enough provenance to answer where the information came from. A source reference will likely contain a source name, source-native identifier, public URL when safe, retrieval or publication time when useful, marking or license notes, and confidence when supplied.
+Each entity and relationship retains source references that identify where the information came from. The initial source reference includes a source name and may include a source-native identifier, public URL, publication or retrieval time, marking, and license.
 
 The model must distinguish source-provided facts from normalized labels. Conflicting sources should remain traceable rather than being silently merged into one unsupported claim.
 
