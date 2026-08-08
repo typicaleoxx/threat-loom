@@ -211,7 +211,7 @@ The initial synthetic dataset is implemented in [`src/data/mock/dataset.ts`](../
 - Use invented neutral names that cannot be mistaken for current intelligence claims.
 - Exercise every planned entity category and important relationship direction with the smallest useful data set.
 - Include missing optional fields, duplicate aliases, and invalid records in tests where needed.
-- Keep fixtures behind the mock repository once that boundary is implemented. Components must not import them directly.
+- Keep fixtures behind the mock repository. Components must not import them directly.
 - Do not copy restricted report text or real sensitive indicators into fixtures.
 
 ## OpenCTI mapping considerations

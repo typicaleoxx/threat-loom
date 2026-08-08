@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom currently has a minimal Next.js application shell, source-neutral domain model contracts, and a normalized development-only dataset. The repository, adapter, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
+Threat Loom currently has a minimal Next.js application shell, source-neutral domain model contracts, a normalized development-only dataset, and a mock repository implementation. Visualization, OpenCTI, production adapter, and deployment architecture remain planned and are not implemented.
 
 ## Architecture principles
 
@@ -16,7 +16,7 @@ Threat Loom currently has a minimal Next.js application shell, source-neutral do
 8. **Remain self-hostable.** Core operation must not depend on paid services.
 9. **Add infrastructure only when required.** Early work should prove the product boundary with mock data before adding OpenCTI or deployment complexity.
 
-## Planned development architecture
+## Development architecture
 
 ```text
 clearly labeled mock records
@@ -36,7 +36,7 @@ clearly labeled mock records
  Cytoscape.js graph       React interface
 ```
 
-The mock repository will return normalized domain entities and relationships. It may parse fixture-shaped source records internally, but React components will not import fixtures directly. This keeps early screens representative of the eventual integration boundary.
+The mock repository returns normalized domain entities and relationships from the synthetic dataset. React components must depend on the repository contract and must not import fixtures directly. The graph transformation and view-model layers remain planned.
 
 Mock records must be labeled as development or test data. They must not be presented as current threat intelligence.
 
@@ -82,13 +82,14 @@ The frontend will not ingest CTI feeds, store connector secrets, perform analyst
 
 ## Data adapter and repository boundary
 
-The repository contract is the only data access surface available to features. Its exact TypeScript shape will be defined in v0.2, after usage is clear. It is expected to support focused queries such as:
+The async repository contract is implemented in [`src/data/repository.ts`](../src/data/repository.ts), with the development implementation in [`src/data/mock/repository.ts`](../src/data/mock/repository.ts). It supports focused queries to:
 
 - retrieve an entity by stable ID;
 - list entities by supported category;
 - retrieve relationships for an entity or exploration context;
-- retrieve provenance and linked reports;
-- return explicit errors or result metadata for incomplete data.
+- retrieve related entities with optional direction and relationship-type filters.
+
+Missing entity lookups return `undefined`. Relationship direction defaults to both incoming and outgoing connections. The async contract allows a later remote implementation without changing feature-facing method signatures.
 
 Adapters are responsible for source validation, source-to-domain mapping, relationship direction, identifier strategy, provenance, and source-specific error translation. Components are responsible for presentation, not data repair.
 

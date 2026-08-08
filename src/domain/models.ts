@@ -128,6 +128,18 @@ export interface Report extends EntityBase<"report"> {
   readonly license?: string;
 }
 
+/** Any normalized entity available through a Threat Loom repository. */
+export type ThreatEntity =
+  | ThreatActor
+  | Industry
+  | AttackTechnique
+  | Campaign
+  | Malware
+  | Tool
+  | Infrastructure
+  | Location
+  | Report;
+
 /** An explicit, directed, source-supported connection between two entities. */
 export interface Relationship {
   readonly id: RelationshipId;
