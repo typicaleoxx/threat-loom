@@ -1,6 +1,8 @@
-// renders the baseline Threat Loom application shell.
+// renders the Threat Loom application shell and relationship graph.
 import type { ReactElement } from "react";
 import { mockThreatRepository } from "../data/mock/repository";
+import { toGraphElements } from "../graph/graph";
+import { ThreatGraph } from "../graph/threat-graph";
 
 interface ExplorationSectionProps {
   readonly id: string;
@@ -47,16 +49,20 @@ function ExplorationSection({
 }
 
 /**
- * Render the repository-backed shell and future visualization workspace.
+ * Render the repository-backed shell and relationship graph.
  *
- * @returns A promise resolving to the baseline application shell.
+ * @returns A promise resolving to the application shell and relationship graph.
  */
 export default async function Home(): Promise<ReactElement> {
-  const [threatActors, industries, attackTechniques] = await Promise.all([
-    mockThreatRepository.getThreatActors(),
-    mockThreatRepository.getIndustries(),
-    mockThreatRepository.getAttackTechniques(),
-  ]);
+  const [threatActors, industries, attackTechniques, entities, relationships] =
+    await Promise.all([
+      mockThreatRepository.getThreatActors(),
+      mockThreatRepository.getIndustries(),
+      mockThreatRepository.getAttackTechniques(),
+      mockThreatRepository.getEntities(),
+      mockThreatRepository.getRelationships(),
+    ]);
+  const graphElements = toGraphElements(entities, relationships);
 
   return (
     <div className="app-shell">
@@ -105,25 +111,19 @@ export default async function Home(): Promise<ReactElement> {
         <section className="workspace" aria-labelledby="workspace-title">
           <div className="workspace-heading">
             <p className="eyebrow">Relationship view</p>
-            <h2 id="workspace-title">Relationship workspace</h2>
+            <h2 id="workspace-title">Threat relationship graph</h2>
             <p>
-              A focused canvas for exploring normalized entities and their
-              supported connections.
+              Explore normalized development entities and their supported
+              connections. Select a node to focus its direct neighborhood.
             </p>
           </div>
-          <div
-            aria-label="Relationship visualization workspace"
-            className="workspace-canvas"
-          >
-            <p>Visualization workspace</p>
-            <span>The relationship graph will be introduced in v0.3.</span>
-          </div>
+          <ThreatGraph elements={graphElements} />
         </section>
       </main>
 
       <footer className="app-footer">
-        <p>Repository-backed foundation</p>
-        <p>v0.2</p>
+        <p>Interactive graph foundation</p>
+        <p>v0.3</p>
       </footer>
     </div>
   );

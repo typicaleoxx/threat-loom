@@ -4,7 +4,7 @@ Threat Loom is an interactive cyber threat intelligence visualization platform.
 
 It is planned to help users explore relationships among threat actors, industries, campaigns, malware, tools, MITRE ATT&CK techniques, infrastructure, locations, and public intelligence reports.
 
-> Project status: v0.2 Foundation. The repository-backed application shell, quality tooling, normalized domain contracts, synthetic development dataset, and mock repository are initialized. Relationship visualization and full exploration features are not implemented.
+> Project status: v0.3 Graph in progress. The repository-backed application shell now includes the initial interactive Cytoscape relationship graph and tested graph transformation boundary. Complete explorer flows remain planned.
 
 ## Purpose
 
@@ -63,6 +63,7 @@ The project is intended to remain usable with open-source software, free or publ
 |-- src/data/repository.ts   Domain-facing data access contract
 |-- src/data/mock/           Synthetic development-only CTI records
 |-- src/domain/              Source-neutral domain model contracts
+|-- src/graph/               Graph transformation and Cytoscape component
 |-- AGENTS.md                Repository engineering contract
 |-- LICENSE                  Project license
 |-- package.json             Dependencies and verified npm scripts
@@ -71,7 +72,7 @@ The project is intended to remain usable with open-source software, free or publ
 
 ## Development status
 
-The repository contains a responsive Next.js application shell, source-neutral TypeScript domain models, a small synthetic development dataset, and an async mock repository, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. The shell lists the available development actors, industries, and ATT&CK techniques through the repository boundary. It does not contain graph libraries, OpenCTI integration, production data adapters, or Docker configuration yet.
+The repository contains a responsive Next.js application shell, source-neutral TypeScript domain models, a small synthetic development dataset, an async mock repository, and an initial Cytoscape relationship graph. The graph transforms repository-provided entities and relationships in a dedicated visualization layer and supports zoom, pan, fit, node focus, neighborhood highlighting, and clear selection. OpenCTI integration, complete explorer flows, production data adapters, and Docker configuration remain planned.
 
 ## Local development
 

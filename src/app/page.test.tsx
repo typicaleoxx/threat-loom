@@ -1,14 +1,44 @@
-// verifies the baseline application shell through its visible content.
+// verifies the application shell and relationship graph controls.
 import { cleanup, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import Home from "./page";
+
+const graphMock = vi.hoisted(() => ({
+  destroy: vi.fn(),
+  fit: vi.fn(),
+  on: vi.fn(),
+  resize: vi.fn(),
+}));
+
+vi.mock("cytoscape", () => ({
+  default: () => graphMock,
+}));
+
+class ResizeObserverMock {
+  private readonly callback: ResizeObserverCallback;
+
+  public constructor(callback: ResizeObserverCallback) {
+    this.callback = callback;
+  }
+
+  public disconnect(): void {}
+
+  public observe(): void {
+    this.callback([], this as unknown as ResizeObserver);
+  }
+
+  public unobserve(): void {}
+}
 
 afterEach(() => {
   cleanup();
+  vi.unstubAllGlobals();
+  vi.clearAllMocks();
 });
 
 describe("Home", () => {
-  it("renders the application identity and future visualization workspace", async () => {
+  it("renders the application identity and relationship graph controls", async () => {
+    vi.stubGlobal("ResizeObserver", ResizeObserverMock);
     render(await Home());
 
     expect(
@@ -17,10 +47,14 @@ describe("Home", () => {
     expect(
       screen.getByRole("heading", {
         level: 2,
-        name: "Relationship workspace",
+        name: "Threat relationship graph",
       }),
     ).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Fit graph" })).toBeTruthy();
+    expect(screen.getByRole("combobox", { name: "Focus entity" })).toBeTruthy();
     expect(screen.getByText("Development data")).toBeTruthy();
+    expect(graphMock.resize).toHaveBeenCalledOnce();
+    expect(graphMock.fit).toHaveBeenCalledWith(undefined, 48);
   });
 
   it("renders repository-backed exploration sections", async () => {

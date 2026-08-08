@@ -2,7 +2,7 @@
 
 ## Status
 
-This document defines visual and interaction principles. Initial dark neutral tokens and responsive shell regions are implemented in [`src/app/globals.css`](../src/app/globals.css). Graph tokens, layouts, and motion values remain open until their features are implemented and tested on representative displays.
+This document defines visual and interaction principles. Initial dark neutral tokens, responsive shell regions, semantic graph treatments, and graph focus states are implemented. Motion values and further display calibration remain open until their features are tested on representative displays.
 
 ## Visual philosophy
 
@@ -26,7 +26,7 @@ Physical display testing is required before declaring fullscreen layouts complet
 
 Entity categories should receive distinct semantic visual treatments for threat actors, industries, malware and tools, ATT&CK techniques, campaigns, infrastructure, locations, and reports. Malware and tools may share a family while remaining distinguishable through labels or shape.
 
-Exact colors remain open until contrast, projection, display calibration, and color-vision testing can inform token selection. The final system should:
+The initial graph uses restrained category colors with distinct node shapes and a neutral fallback. Exact colors may be refined after contrast, projection, display calibration, and color-vision testing. The final system should:
 
 - define colors as named semantic tokens rather than component-specific literals;
 - reserve high-emphasis color for selection, focus, warnings, or important relationships;
@@ -70,6 +70,8 @@ An exact typeface and scale will be chosen during foundation design work.
 - Do not create decorative nodes, random edges, or unsupported geographic links.
 
 Graph density and layout thresholds will be based on measured usability with representative data.
+
+The initial development graph uses a deterministic breadth-first layout. Selection adds a high-contrast border, preserves direct neighbors and connecting edges, and reduces unrelated elements without removing them. A native entity selector provides the keyboard focus path, and the graph canvas supports pointer selection and background clearing.
 
 ## Interaction behavior
 

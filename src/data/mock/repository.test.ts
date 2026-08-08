@@ -6,6 +6,37 @@ import { mockThreatRepository } from "./repository";
 const actorId = "development:threat-actor:atlas";
 
 describe("mockThreatRepository", () => {
+  it("returns every normalized entity", async () => {
+    const entities = await mockThreatRepository.getEntities();
+
+    expect(entities).toHaveLength(10);
+    expect(entities.map(({ type }) => type)).toEqual(
+      expect.arrayContaining([
+        "threat-actor",
+        "industry",
+        "attack-technique",
+        "campaign",
+        "malware",
+        "tool",
+        "infrastructure",
+        "location",
+        "report",
+      ]),
+    );
+  });
+
+  it("returns every normalized relationship", async () => {
+    const relationships = await mockThreatRepository.getRelationships();
+
+    expect(relationships).toHaveLength(11);
+    expect(relationships[0]).toMatchObject({
+      id: "development:relationship:actor-uses-technique",
+      sourceId: actorId,
+      targetId: "development:attack-technique:cascade",
+      type: "uses",
+    });
+  });
+
   it("finds an entity by stable ID", async () => {
     await expect(
       mockThreatRepository.getEntityById(actorId),
