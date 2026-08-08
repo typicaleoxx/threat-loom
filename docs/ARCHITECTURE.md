@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom is currently in the planning and repository foundation stage. The architectures below are planned. No application, data adapter, OpenCTI integration, or deployment configuration has been implemented.
+Threat Loom currently has a minimal Next.js application shell with TypeScript, Tailwind CSS, ESLint, and Prettier. The data, visualization, OpenCTI, and deployment architectures below remain planned and are not implemented.
 
 ## Architecture principles
 

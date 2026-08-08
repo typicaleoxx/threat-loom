@@ -4,7 +4,7 @@ Threat Loom is an interactive cyber threat intelligence visualization platform.
 
 It is planned to help users explore relationships among threat actors, industries, campaigns, malware, tools, MITRE ATT&CK techniques, infrastructure, locations, and public intelligence reports.
 
-> Project status: planning and repository foundation. No application runtime or product functionality has been implemented.
+> Project status: v0.2 Foundation. The minimal application shell and quality tooling are initialized. Threat intelligence and visualization features are not implemented.
 
 ## Purpose
 
@@ -59,16 +59,27 @@ The project is intended to remain usable with open-source software, free or publ
 .
 |-- .github/                 GitHub contribution templates
 |-- docs/                    Product, architecture, design, security, and workflow plans
+|-- src/app/                 Minimal Next.js App Router shell
 |-- AGENTS.md                Repository engineering contract
 |-- LICENSE                  Project license
+|-- package.json             Dependencies and verified npm scripts
 `-- README.md                Project overview
 ```
 
-Application directories will be documented after the application foundation is initialized.
-
 ## Development status
 
-The repository currently contains planning documents and engineering standards only. Setup commands, application source, package manifests, Docker configuration, and CI workflows are intentionally deferred until their roadmap phases.
+The repository contains a minimal Next.js application using TypeScript and Tailwind CSS, with ESLint and Prettier configured. It does not contain CTI models, data adapters, mock intelligence, graph libraries, OpenCTI integration, testing infrastructure, Docker configuration, or CI workflows yet.
+
+## Local development
+
+Node.js 20.9 or newer and npm are required.
+
+```text
+npm install
+npm run dev
+```
+
+The development server is available at `http://localhost:3000`. See the [Development Guide](docs/DEVELOPMENT.md) for all verified commands.
 
 ## Roadmap summary
 

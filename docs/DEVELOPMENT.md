@@ -2,7 +2,7 @@
 
 ## Current status
 
-Threat Loom is in the planning and repository foundation stage. The application, package scripts, tests, CI workflow, and local runtime have not been initialized.
+Threat Loom has a minimal Next.js application shell with verified development, build, lint, type-check, and formatting scripts. Testing and CI are not initialized.
 
 The repository-wide contract is [AGENTS.md](../AGENTS.md). Architecture, domain, security, and visual rules are maintained in their focused documents rather than repeated here.
 
@@ -98,7 +98,7 @@ The planned testing layers are:
 
 Tests must not require a live OpenCTI instance unless they are explicitly marked integration tests and run in an approved environment. Use representative, clearly labeled test data. Every defect fix should include a regression test when practical.
 
-Once scripts exist, changes must pass formatting, linting, TypeScript checking, relevant tests, and a production build before merge. Commands will be documented here after initialization.
+Changes must pass formatting, linting, TypeScript checking, relevant tests when available, and a production build before merge. Verified commands are listed under Local setup.
 
 ## CI expectations
 
@@ -135,6 +135,27 @@ Repository prose must not use em dashes. It must remain factual and must not pre
 
 ## Local setup
 
-**Pending until application initialization.**
+### Requirements
 
-There are no valid install, run, test, or build commands yet. This section will be replaced with verified commands during v0.2 Foundation after the package manager, runtime requirements, environment variables, and scripts are established.
+- Node.js 20.9 or newer
+- npm
+
+### Install and run
+
+```text
+npm install
+npm run dev
+```
+
+The development server uses `http://localhost:3000` by default. No environment variables are required for the current shell.
+
+### Quality commands
+
+```text
+npm run format:check
+npm run lint
+npm run typecheck
+npm run build
+```
+
+Testing commands will be added when the testing foundation is initialized.

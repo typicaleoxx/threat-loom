@@ -1,0 +1,6 @@
+/* loads Tailwind CSS and defines the application color scheme. */
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}

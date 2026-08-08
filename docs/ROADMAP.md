@@ -34,6 +34,10 @@ Establish the product, architecture, domain, design, security, and engineering f
 
 Create the smallest maintainable application foundation needed for feature development.
 
+### Current progress
+
+The minimal Next.js application shell, TypeScript, Tailwind CSS, ESLint, Prettier, npm scripts, and local setup documentation are initialized. Domain contracts, mock data, testing, CI, and product interface work remain pending.
+
 ### Major deliverables
 
 - Next.js, React, and TypeScript application shell;
