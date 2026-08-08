@@ -2,7 +2,7 @@
 
 ## Current status
 
-Threat Loom has a minimal Next.js application shell with verified development, build, lint, type-check, and formatting scripts. Testing and CI are not initialized.
+Threat Loom has a minimal Next.js application shell with verified development, test, build, lint, type-check, and formatting scripts. Vitest and React Testing Library are initialized. CI is not initialized.
 
 The repository-wide contract is [AGENTS.md](../AGENTS.md). Architecture, domain, security, and visual rules are maintained in their focused documents rather than repeated here.
 
@@ -90,7 +90,7 @@ Authors should respond to review with code, clarification, or a focused follow-u
 
 ## Testing expectations
 
-The planned testing layers are:
+The testing layers are:
 
 - **Vitest:** normalized model behavior, adapters, graph transformation, filters, identity, and other domain logic.
 - **React Testing Library:** component behavior, keyboard access, semantic controls, selection, and visible states.
@@ -155,7 +155,8 @@ The development server uses `http://localhost:3000` by default. No environment v
 npm run format:check
 npm run lint
 npm run typecheck
+npm test
 npm run build
 ```
 
-Testing commands will be added when the testing foundation is initialized.
+Use `npm run test:watch` during development when continuous test feedback is useful.
