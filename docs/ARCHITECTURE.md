@@ -2,7 +2,7 @@
 
 ## Status
 
-Threat Loom currently has a minimal Next.js application shell, source-neutral domain model contracts, a normalized development-only dataset, and a mock repository implementation. Visualization, OpenCTI, production adapter, and deployment architecture remain planned and are not implemented.
+Threat Loom currently has a repository-backed Next.js application shell, source-neutral domain model contracts, a normalized development-only dataset, and a mock repository implementation. Relationship visualization, OpenCTI, production adapter, and deployment architecture remain planned and are not implemented.
 
 ## Architecture principles
 
@@ -68,9 +68,8 @@ The exact Next.js server boundary and caching approach will be decided during fo
 
 ## Frontend responsibilities
 
-The planned frontend will:
+The baseline frontend now provides repository-backed actor, industry, and ATT&CK technique entry points plus a responsive workspace reserved for the relationship visualization. Later frontend work will:
 
-- provide actor, industry, and ATT&CK technique entry points;
 - manage selection, filters, navigation, focus, and idle-state transitions;
 - transform normalized entities and relationships into Cytoscape.js elements;
 - render contextual details and provenance;

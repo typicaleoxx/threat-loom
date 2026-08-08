@@ -4,7 +4,7 @@ Threat Loom is an interactive cyber threat intelligence visualization platform.
 
 It is planned to help users explore relationships among threat actors, industries, campaigns, malware, tools, MITRE ATT&CK techniques, infrastructure, locations, and public intelligence reports.
 
-> Project status: v0.2 Foundation. The minimal application shell, quality tooling, normalized domain contracts, synthetic development dataset, and mock repository are initialized. Threat intelligence and visualization features are not implemented.
+> Project status: v0.2 Foundation. The repository-backed application shell, quality tooling, normalized domain contracts, synthetic development dataset, and mock repository are initialized. Relationship visualization and full exploration features are not implemented.
 
 ## Purpose
 
@@ -59,7 +59,7 @@ The project is intended to remain usable with open-source software, free or publ
 .
 |-- .github/                 GitHub contribution templates
 |-- docs/                    Product, architecture, design, security, and workflow plans
-|-- src/app/                 Minimal Next.js App Router shell
+|-- src/app/                 Repository-backed Next.js application shell
 |-- src/data/repository.ts   Domain-facing data access contract
 |-- src/data/mock/           Synthetic development-only CTI records
 |-- src/domain/              Source-neutral domain model contracts
@@ -71,7 +71,7 @@ The project is intended to remain usable with open-source software, free or publ
 
 ## Development status
 
-The repository contains a minimal Next.js application, source-neutral TypeScript domain models, a small synthetic development dataset, and an async mock repository, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. It does not contain graph libraries, OpenCTI integration, production data adapters, or Docker configuration yet.
+The repository contains a responsive Next.js application shell, source-neutral TypeScript domain models, a small synthetic development dataset, and an async mock repository, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. The shell lists the available development actors, industries, and ATT&CK techniques through the repository boundary. It does not contain graph libraries, OpenCTI integration, production data adapters, or Docker configuration yet.
 
 ## Local development
 

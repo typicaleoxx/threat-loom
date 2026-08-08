@@ -2,7 +2,7 @@
 
 ## Status
 
-This document defines planned visual and interaction principles. Exact tokens, components, graph layouts, and motion values will be established during implementation and tested on representative displays.
+This document defines visual and interaction principles. Initial dark neutral tokens and responsive shell regions are implemented in [`src/app/globals.css`](../src/app/globals.css). Graph tokens, layouts, and motion values remain open until their features are implemented and tested on representative displays.
 
 ## Visual philosophy
 

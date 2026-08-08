@@ -36,7 +36,7 @@ Create the smallest maintainable application foundation needed for feature devel
 
 ### Current progress
 
-The minimal Next.js application shell, normalized domain contracts, synthetic development dataset, mock repository, TypeScript, Tailwind CSS, Vitest, React Testing Library, ESLint, Prettier, GitHub Actions CI, npm scripts, and local setup documentation are initialized. Product interface work remains pending.
+The repository-backed Next.js application shell, baseline navigation and responsive layout regions, normalized domain contracts, synthetic development dataset, mock repository, TypeScript, Tailwind CSS, Vitest, React Testing Library, ESLint, Prettier, GitHub Actions CI, npm scripts, and local setup documentation are initialized. Relationship visualization remains pending.
 
 ### Major deliverables
 
