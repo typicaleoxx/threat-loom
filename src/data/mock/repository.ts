@@ -42,11 +42,13 @@ function findRelationships(
 
 /** Mock repository backed by normalized, development-only records. */
 export const mockThreatRepository: ThreatRepository = {
+  getEntities: () => Promise.resolve(entities),
   getThreatActors: () => Promise.resolve(mockThreatDataset.threatActors),
   getIndustries: () => Promise.resolve(mockThreatDataset.industries),
   getAttackTechniques: () =>
     Promise.resolve(mockThreatDataset.attackTechniques),
   getCampaigns: () => Promise.resolve(mockThreatDataset.campaigns),
+  getRelationships: () => Promise.resolve(mockThreatDataset.relationships),
   getEntityById: (id) =>
     Promise.resolve(entities.find((entity) => entity.id === id)),
   getRelationshipsForEntity: (id, query) =>

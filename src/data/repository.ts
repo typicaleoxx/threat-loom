@@ -25,6 +25,9 @@ export interface RelationshipQuery {
 
 /** Async data-access boundary returning only normalized Threat Loom models. */
 export interface ThreatRepository {
+  /** Return every available normalized entity. */
+  getEntities(): Promise<readonly ThreatEntity[]>;
+
   /** Return every available threat actor. */
   getThreatActors(): Promise<readonly ThreatActor[]>;
 
@@ -36,6 +39,9 @@ export interface ThreatRepository {
 
   /** Return every available campaign. */
   getCampaigns(): Promise<readonly Campaign[]>;
+
+  /** Return every available normalized relationship. */
+  getRelationships(): Promise<readonly Relationship[]>;
 
   /** Return an entity by stable ID, or `undefined` when it does not exist. */
   getEntityById(id: EntityId): Promise<ThreatEntity | undefined>;

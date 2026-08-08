@@ -82,7 +82,7 @@ a {
 .data-status,
 .app-footer p,
 .workspace-heading p,
-.workspace-canvas p,
+.graph-toolbar p,
 .exploration-heading p {
   margin: 0;
 }
@@ -231,7 +231,7 @@ a {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-medium);
   background: var(--color-surface);
-  padding: clamp(1.5rem, 2.4vw, 3rem);
+  padding: clamp(1.25rem, 2vw, 2.25rem);
 }
 
 .workspace-heading {
@@ -240,7 +240,7 @@ a {
 
 .workspace-heading h2 {
   margin-top: 0.65rem;
-  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 610;
   line-height: 1.05;
 }
@@ -253,27 +253,79 @@ a {
   line-height: 1.65;
 }
 
-.workspace-canvas {
-  display: grid;
-  min-height: 22rem;
+.graph-shell {
+  display: flex;
+  min-height: 30rem;
   flex: 1;
-  place-content: center;
-  margin-top: clamp(2rem, 5vw, 5rem);
-  border: 1px dashed var(--color-border-strong);
+  flex-direction: column;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-small);
   background: var(--color-surface-raised);
-  text-align: center;
 }
 
-.workspace-canvas p {
-  font-size: 0.95rem;
-  font-weight: 620;
+.graph-toolbar {
+  display: flex;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.workspace-canvas span {
-  margin-top: 0.4rem;
+.graph-toolbar p {
+  flex: none;
   color: var(--color-text-subtle);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.graph-controls {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.graph-controls label {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.graph-controls select,
+.graph-controls button {
+  height: 2rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0.35rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.72rem;
+}
+
+.graph-controls select {
+  max-width: min(17rem, 36vw);
+  padding-inline: 0.55rem 1.75rem;
+}
+
+.graph-controls button {
+  flex: none;
+  padding-inline: 0.7rem;
+  cursor: pointer;
+}
+
+.graph-controls button:hover {
+  border-color: var(--color-accent);
+}
+
+.graph-canvas {
+  min-height: 26rem;
+  flex: 1;
+  background: var(--color-surface-raised);
+  touch-action: none;
 }
 
 .app-footer {
@@ -319,5 +371,20 @@ a {
 
   .workspace {
     min-height: 28rem;
+  }
+
+  .graph-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .graph-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .graph-controls select {
+    max-width: none;
+    flex: 1;
   }
 }
