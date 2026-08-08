@@ -2,7 +2,7 @@
 
 ## Current status
 
-Threat Loom has a minimal Next.js application shell with verified development, test, build, lint, type-check, and formatting scripts. Vitest and React Testing Library are initialized. CI is not initialized.
+Threat Loom has a minimal Next.js application shell with verified development, test, build, lint, type-check, and formatting scripts. Vitest, React Testing Library, and GitHub Actions CI are initialized.
 
 The repository-wide contract is [AGENTS.md](../AGENTS.md). Architecture, domain, security, and visual rules are maintained in their focused documents rather than repeated here.
 
@@ -102,7 +102,7 @@ Changes must pass formatting, linting, TypeScript checking, relevant tests when 
 
 ## CI expectations
 
-GitHub Actions is planned for continuous integration. The initial workflow should install dependencies reproducibly and run:
+GitHub Actions runs on pull requests and pushes to `main` using Node.js 20. The workflow installs dependencies with `npm ci` and runs:
 
 1. formatting verification;
 2. ESLint;

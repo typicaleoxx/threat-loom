@@ -68,7 +68,7 @@ The project is intended to remain usable with open-source software, free or publ
 
 ## Development status
 
-The repository contains a minimal Next.js application using TypeScript and Tailwind CSS, with Vitest, React Testing Library, ESLint, and Prettier configured. It does not contain CTI models, data adapters, mock intelligence, graph libraries, OpenCTI integration, Docker configuration, or CI workflows yet.
+The repository contains a minimal Next.js application using TypeScript and Tailwind CSS, with Vitest, React Testing Library, ESLint, Prettier, and GitHub Actions CI configured. It does not contain CTI models, data adapters, mock intelligence, graph libraries, OpenCTI integration, or Docker configuration yet.
 
 ## Local development
 
