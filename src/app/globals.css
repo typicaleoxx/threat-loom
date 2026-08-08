@@ -1,6 +1,323 @@
-/* loads Tailwind CSS and defines the application color scheme. */
+/* defines the semantic visual foundation for the Threat Loom application shell. */
 @import "tailwindcss";
 
 :root {
   color-scheme: dark;
+  --color-background: #0b0e12;
+  --color-surface: #11161c;
+  --color-surface-raised: #151b22;
+  --color-border: #28313b;
+  --color-border-strong: #394551;
+  --color-text: #f1f4f6;
+  --color-text-muted: #9da8b3;
+  --color-text-subtle: #707c88;
+  --color-accent: #86b8b1;
+  --color-status: #91c9a5;
+  --radius-small: 0.5rem;
+  --radius-medium: 0.875rem;
+  --space-page: clamp(1.25rem, 2.4vw, 3rem);
+  --font-sans:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-background);
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.app-shell {
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: auto 1fr auto;
+}
+
+.app-header,
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--space-page);
+}
+
+.app-header {
+  min-height: 5.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.brand-lockup h1,
+.brand-lockup p,
+.data-status,
+.app-footer p,
+.workspace-heading p,
+.workspace-canvas p,
+.exploration-heading p {
+  margin: 0;
+}
+
+.brand-lockup h1 {
+  font-size: 1.35rem;
+  font-weight: 670;
+  letter-spacing: -0.025em;
+}
+
+.brand-lockup p {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.data-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.data-status span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-status);
+}
+
+.shell-content {
+  display: grid;
+  grid-template-columns: minmax(18rem, 22rem) minmax(0, 1fr);
+  gap: var(--space-page);
+  min-width: 0;
+  padding: var(--space-page);
+}
+
+.exploration-panel {
+  min-width: 0;
+  padding-right: var(--space-page);
+  border-right: 1px solid var(--color-border);
+}
+
+.eyebrow {
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.exploration-heading h2,
+.workspace-heading h2 {
+  margin: 0;
+  letter-spacing: -0.035em;
+}
+
+.exploration-heading h2 {
+  margin-top: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 640;
+}
+
+.exploration-heading > p:last-child {
+  max-width: 28rem;
+  margin-top: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.exploration-panel nav {
+  display: grid;
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.exploration-panel nav a {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.8rem 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 560;
+  text-decoration: none;
+}
+
+.exploration-panel nav a:hover {
+  color: var(--color-text);
+}
+
+.exploration-sections {
+  margin-top: 1.25rem;
+}
+
+.exploration-section {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 1rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-heading h3 {
+  margin: 0;
+  font-size: 0.93rem;
+  font-weight: 620;
+}
+
+.section-heading span {
+  flex: none;
+  color: var(--color-text-subtle);
+  font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.exploration-section ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exploration-section li {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.workspace {
+  display: flex;
+  min-width: 0;
+  min-height: 40rem;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 2.4vw, 3rem);
+}
+
+.workspace-heading {
+  max-width: 44rem;
+}
+
+.workspace-heading h2 {
+  margin-top: 0.65rem;
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-weight: 610;
+  line-height: 1.05;
+}
+
+.workspace-heading > p:last-child {
+  max-width: 38rem;
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.workspace-canvas {
+  display: grid;
+  min-height: 22rem;
+  flex: 1;
+  place-content: center;
+  margin-top: clamp(2rem, 5vw, 5rem);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-small);
+  background: var(--color-surface-raised);
+  text-align: center;
+}
+
+.workspace-canvas p {
+  font-size: 0.95rem;
+  font-weight: 620;
+}
+
+.workspace-canvas span {
+  margin-top: 0.4rem;
+  color: var(--color-text-subtle);
+  font-size: 0.78rem;
+}
+
+.app-footer {
+  min-height: 3.5rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-subtle);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 56rem) {
+  .shell-content {
+    grid-template-columns: 1fr;
+  }
+
+  .exploration-panel {
+    padding-right: 0;
+    padding-bottom: var(--space-page);
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .workspace {
+    min-height: 32rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  .app-header {
+    align-items: flex-start;
+    gap: 1rem;
+    padding-block: 1.25rem;
+  }
+
+  .brand-lockup {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .data-status {
+    margin-top: 0.1rem;
+  }
+
+  .workspace {
+    min-height: 28rem;
+  }
 }
